@@ -410,7 +410,7 @@ var FORM_ENDPOINT = '';
   var ph = document.getElementById('movie-placeholder');
   if (YOUTUBE_ID) {
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(YOUTUBE_ID);
+    f.src = 'https://www.youtube.com/embed/' + encodeURIComponent(YOUTUBE_ID);
     f.title = '動画';
     f.loading = 'lazy';
     f.referrerPolicy = 'strict-origin-when-cross-origin';
