@@ -14,8 +14,24 @@ html { scroll-behavior: smooth; }
 body { margin: 0; }
 a { color: #4A2F36; }
 a:hover { color: #B4476A; }
-.hero-slide { position: absolute; inset: 0; box-sizing: border-box; padding: 20px 24px; display: flex; align-items: flex-start; justify-content: flex-end; text-align: right; font-size: 14px; color: #FFFFFF; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease; }
+.hero-slide { position: absolute; inset: 0; overflow: hidden; isolation: isolate; opacity: 0; transition: opacity 1.5s ease; }
 .hero-slide.is-active { opacity: 1; }
+.hero-blur { position: absolute; inset: -40px; background-size: cover; background-position: center; filter: blur(28px); }
+.hero-tint { position: absolute; inset: 0; background: rgba(74, 47, 54, 0.5); }
+.hero-photo-wrap { position: absolute; inset: 0; max-width: 1160px; margin: 0 auto; }
+.hero-photo { position: absolute; top: 0; right: 24px; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
+.hero-label { position: absolute; top: 20px; right: 24px; font-size: 14px; color: #FFFFFF; }
+.hero-text { max-width: calc(100% - 570px); }
+#hero-toggle { background: rgba(74, 47, 54, 0.55) !important; }
+@media (max-width: 1023px) {
+  .hero-blur { display: none; }
+  .hero-photo-wrap { max-width: none; }
+  .hero-photo { right: 0; width: 100%; aspect-ratio: auto; }
+  .hero-tint { z-index: 2; background: linear-gradient(to top, rgba(74, 47, 54, 0.94) 0%, rgba(74, 47, 54, 0.78) 28%, rgba(74, 47, 54, 0) 60%); }
+  .hero-inner { min-height: 780px !important; justify-content: flex-end !important; gap: 20px !important; padding-top: 24px !important; }
+  .hero-text { max-width: none; }
+  .hero-lead { display: none; }
+}
 .hero-dot { width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .hero-dot span { display: block; width: 12px; height: 12px; border-radius: 50%; box-sizing: border-box; border: 2px solid #FFFFFF; background: transparent; }
 .hero-dot.is-active span { background: #FFFFFF; }
@@ -47,11 +63,10 @@ a:hover { color: #B4476A; }
 <div role="group" aria-roledescription="カルーセル" aria-label="背景写真" style="position: absolute; inset: 0">
 <div id="hero-slides" style="position: absolute; inset: 0"></div>
 </div>
-<div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(74, 47, 54, 0.45)"></div>
-<div style="position: relative; max-width: 1160px; min-height: 700px; margin: 0 auto; padding: 104px 24px 24px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 56px">
-<div style="max-width: 640px; display: flex; flex-direction: column; gap: 28px; align-items: flex-start">
-<h1 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 700; font-size: clamp(28px, 4.2vw, 52px); line-height: 1.6; letter-spacing: 0.06em">好きな町で、はたらく。<br>城崎温泉から、<br>地方の魅力を届ける。</h1>
-<p style="margin: 0; color: #FFFFFF; max-width: 520px">大阪から城崎温泉へ、24歳でひとり移住。浴衣屋さんの立ち上げとSNSでの発信を続けています。店舗プロデュース・SNSマーケティング・執筆など、地方と発信にまつわるお仕事を承っています。</p>
+<div class="hero-inner" style="position: relative; max-width: 1160px; min-height: 700px; margin: 0 auto; padding: 104px 24px 24px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 56px">
+<div class="hero-text" style="display: flex; flex-direction: column; gap: 28px; align-items: flex-start">
+<h1 style="margin: 0; font-family: 'Shippori Mincho', serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.6; letter-spacing: 0.06em">好きな町で、はたらく。<br>城崎温泉から、<br>地方の魅力を届ける。</h1>
+<p class="hero-lead" style="margin: 0; color: #FFFFFF; max-width: 520px">大阪から城崎温泉へ、24歳でひとり移住。浴衣屋さんの立ち上げとSNSでの発信を続けています。店舗プロデュース・SNSマーケティング・執筆など、地方と発信にまつわるお仕事を承っています。</p>
 <a href="#contact" style="display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 32px; background: var(--accent); color: #FFFFFF; font-weight: 700; text-decoration: none; border-radius: 4px">お仕事のご相談はこちら →</a>
 </div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px">
@@ -64,7 +79,7 @@ a:hover { color: #B4476A; }
 </section>
 
 <section id="profile" style="max-width: 1160px; margin: 0 auto; padding: 104px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
-<div style="flex: 1 1 300px; max-width: 420px; aspect-ratio: 4 / 5; background: #FBF3F1; border: 2px dashed #B08F93; border-radius: 6px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; font-size: 14px; color: #6B4F55">[プロフィール写真をここに]</div>
+<div style="flex: 1 1 300px; max-width: 420px"><img src="images/profile.jpg" alt="まみこさんのプロフィール写真" width="1125" height="1500" loading="lazy" style="display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 35%; border-radius: 6px"></div>
 <div style="flex: 999 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 22px; align-items: flex-start">
 <div style="display: flex; flex-direction: column; gap: 4px">
 <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: var(--accent)">プロフィール</div>
@@ -95,7 +110,6 @@ a:hover { color: #B4476A; }
 <div>[動画をここに]</div>
 </div>
 </div>
-<p style="margin: 0; font-size: 15px; color: #6B4F55">[動画のタイトル・説明をここに]</p>
 </div>
 </section>
 
@@ -299,14 +313,15 @@ a:hover { color: #B4476A; }
 <script>
 /* ====== ここを書き換えて使います ====== */
 
-// いちばん上の背景写真（5枚）。image に画像ファイルの場所を入れると写真が表示されます。
-// 例: image: 'images/hero1.jpg'
+// いちばん上の背景写真（5枚）。image が画像ファイルの場所です。写真を替えるときは images フォルダの
+// ファイルを差し替えるか、ここのファイル名を書き換えます。position はスマホ・タブレットで
+// 写真のどのあたりを見せるか（上から何％）です。
 var SLIDES = [
-  { image: '', label: '[背景写真1：城崎温泉の街並み]', color: '#B58A8F' },
-  { image: '', label: '[背景写真2：まみこさん]', color: '#C49A86' },
-  { image: '', label: '[背景写真3：浴衣屋さん]', color: '#A88FA8' },
-  { image: '', label: '[背景写真4：温泉・外湯めぐり]', color: '#9FA58C' },
-  { image: '', label: '[背景写真5：季節の風景]', color: '#C2A07A' }
+  { image: 'images/hero1.jpg', position: 'center 20%', color: '#B58A8F' },
+  { image: 'images/hero2.jpg', position: 'center 50%', color: '#C49A86' },
+  { image: 'images/hero3.jpg', position: 'center 85%', color: '#A88FA8' },
+  { image: 'images/hero4.jpg', position: 'center 55%', color: '#9FA58C' },
+  { image: 'images/hero5.jpg', position: 'center 40%', color: '#C2A07A' }
 ];
 var SLIDE_SECONDS = 5;   // 写真が切り替わるまでの秒数
 var SLIDE_AUTOPLAY = true; // false にすると自動では切り替わりません
@@ -314,7 +329,7 @@ var SLIDE_AUTOPLAY = true; // false にすると自動では切り替わりま�
 // 動画。どちらか片方だけ入れてください。
 var VIDEO_FILE = '';      // 例: 'videos/intro.mp4'
 var VIDEO_POSTER = '';    // 例: 'images/video-cover.jpg'（再生前に見せる画像・なくても可）
-var YOUTUBE_ID = '';      // 例: YouTubeのURLが https://www.youtube.com/watch?v=abc123 なら 'abc123'
+var YOUTUBE_ID = 'r-JykgAR0rU';      // 例: YouTubeのURLが https://www.youtube.com/watch?v=abc123 なら 'abc123'
 
 // お問い合わせフォームの送信先（Formspree などのURL）。空のままだと送信できません。
 var FORM_ENDPOINT = '';
@@ -332,10 +347,28 @@ var FORM_ENDPOINT = '';
     var el = document.createElement('div');
     el.className = 'hero-slide';
     if (s.image) {
-      el.style.backgroundImage = 'url("' + s.image + '")';
+      var blur = document.createElement('div');
+      blur.className = 'hero-blur';
+      blur.style.backgroundImage = 'url("' + s.image + '")';
+      var tint = document.createElement('div');
+      tint.className = 'hero-tint';
+      var pw = document.createElement('div');
+      pw.className = 'hero-photo-wrap';
+      var img = document.createElement('img');
+      img.className = 'hero-photo';
+      img.src = s.image;
+      img.alt = '';
+      if (s.position) img.style.objectPosition = s.position;
+      pw.appendChild(img);
+      el.appendChild(blur);
+      el.appendChild(tint);
+      el.appendChild(pw);
     } else {
       el.style.backgroundColor = s.color;
-      el.textContent = s.label;
+      var lab = document.createElement('div');
+      lab.className = 'hero-label';
+      lab.textContent = s.label || '';
+      el.appendChild(lab);
     }
     wrap.appendChild(el);
     slideEls.push(el);
@@ -380,6 +413,7 @@ var FORM_ENDPOINT = '';
     f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(YOUTUBE_ID);
     f.title = '動画';
     f.loading = 'lazy';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
     f.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share';
     f.allowFullscreen = true;
     slot.appendChild(f);
