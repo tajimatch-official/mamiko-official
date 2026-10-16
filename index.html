@@ -73,6 +73,23 @@ main section[id] { scroll-margin-top: 80px; }
 
 /* ACTIVITIES / WORKS */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.acts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(480px, 100%), 1fr)); gap: 20px; }
+.act { display: flex; align-items: flex-start; gap: 24px; background: var(--blush); border-radius: 6px; padding: 28px; box-sizing: border-box; }
+.act-logo { flex: 0 0 96px; width: 96px; height: 96px; border-radius: 18px; background: #FFFFFF; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px var(--line); }
+.act-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.logo-fallback { font-family: 'Shippori Mincho', serif; font-weight: 700; font-size: 15px; line-height: 1.3; text-align: center; color: var(--accent); }
+.act-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.act-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; }
+.act p { color: var(--sub); }
+.act-links { display: flex; gap: 8px; margin-top: 4px; }
+.act-link { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border: 1px solid var(--ink); border-radius: 999px; background: #FFFFFF; font-size: 13px; font-weight: 700; text-decoration: none; color: var(--ink); }
+.act-link:hover { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+@media (max-width: 767px) {
+  .act { gap: 16px; padding: 22px 18px; }
+  .act-logo { flex-basis: 72px; width: 72px; height: 72px; border-radius: 14px; }
+  .act-top { flex-direction: column; align-items: flex-start; }
+  .act-links { order: 3; }
+}
 .cards-2 { grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); }
 .card { background: var(--blush); border-radius: 6px; padding: 32px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; }
 .bg-blush { background: var(--blush); }
@@ -195,11 +212,35 @@ form { display: flex; flex-direction: column; gap: 22px; background: var(--blush
 <section id="activities" class="section">
 <div class="wrap">
 <div class="head"><div class="eyebrow">ACTIVITIES</div><h2>現在の活動</h2></div>
-<div class="cards cards-2">
-<article class="card"><h3>Yukata mamire</h3><p>城崎温泉での浴衣レンタル事業の立ち上げ・店舗プロデュース。</p></article>
-<article class="card"><h3>たじまっち</h3><p>但馬の人・場所・魅力を伝える地域メディアの運営。</p></article>
-<article class="card"><h3>SNS・PR支援</h3><p>企業や地域事業者のSNSマーケティング、動画制作、情報発信支援。</p></article>
-<article class="card"><h3>兵庫県地域おこし協力隊ネットワーク</h3><p>理事として地域づくりや、地域と人のつながりを広げる活動に参画。</p></article>
+<div class="acts">
+<article class="act">
+<div class="act-logo"><img src="images/logo-yukata.png" alt="Yukata mamire ロゴ" data-fallback="Yukata<br>mamire" loading="lazy"></div>
+<div class="act-body">
+<div class="act-top"><h3>Yukata mamire</h3></div>
+<p>城崎温泉での浴衣レンタル事業の立ち上げ・店舗プロデュース。</p>
+<div class="act-links"><a class="act-link" id="link-yukata" href="#" target="_blank" rel="noopener" aria-label="Yukata mamire のInstagram（新しいタブで開きます）" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg><span>Instagram</span></a></div></div>
+</article>
+<article class="act">
+<div class="act-logo"><img src="images/logo-tajimatch.png" alt="たじまっち ロゴ" data-fallback="たじ<br>まっち" loading="lazy"></div>
+<div class="act-body">
+<div class="act-top"><h3>たじまっち</h3></div>
+<p>但馬の人・場所・魅力を伝える地域メディアの運営。</p>
+<div class="act-links"><a class="act-link" id="link-tajimatch" href="#" target="_blank" rel="noopener" aria-label="たじまっち のInstagram（新しいタブで開きます）" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg><span>Instagram</span></a></div></div>
+</article>
+<article class="act">
+<div class="act-logo"><img src="images/logo-snspr.svg" alt="SNS・PR支援 アイコン" data-fallback="SNS" loading="lazy"></div>
+<div class="act-body">
+<div class="act-top"><h3>SNS・PR支援</h3></div>
+<p>企業や地域事業者のSNSマーケティング、動画制作、情報発信支援。</p>
+</div>
+</article>
+<article class="act">
+<div class="act-logo"><img src="images/logo-network.png" alt="兵庫県地域おこし協力隊ネットワーク ロゴ" data-fallback="NW" loading="lazy"></div>
+<div class="act-body">
+<div class="act-top"><h3>兵庫県地域おこし協力隊ネットワーク</h3></div>
+<p>理事として地域づくりや、地域と人のつながりを広げる活動に参画。</p>
+<div class="act-links"><a class="act-link" id="link-network" href="#" target="_blank" rel="noopener" aria-label="兵庫県地域おこし協力隊ネットワークのホームページ（新しいタブで開きます）" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"></path></svg><span>ホームページ</span></a></div></div>
+</article>
 </div>
 </div>
 </section>
@@ -306,6 +347,12 @@ var VIDEO_FILE = '';      // 例: 'videos/intro.mp4'
 var VIDEO_POSTER = '';    // 例: 'images/video-cover.jpg'（再生前に見せる画像・なくても可）
 var YOUTUBE_ID = 'r-JykgAR0rU';      // 例: YouTubeのURLが https://www.youtube.com/watch?v=abc123 なら 'abc123'
 
+// 「現在の活動」のリンク先。URLを入れるとアイコンが表示され、押すとそのページが開きます。
+var LINK_YUKATA_INSTAGRAM = 'https://www.instagram.com/yukatamamire/';     // 例: 'https://www.instagram.com/アカウント名/'
+var LINK_TAJIMATCH_INSTAGRAM = 'https://www.instagram.com/tajimatch_official/';  // 例: 'https://www.instagram.com/アカウント名/'
+var LINK_NETWORK_HP = 'https://hyglvc-network.jp/';           // 例: 'https://〜'（兵庫県地域おこし協力隊ネットワークのホームページ）
+// ロゴ画像は images フォルダの logo-yukata.png / logo-tajimatch.png / logo-network.png / logo-snspr.svg です。
+
 // お問い合わせ。どちらか片方を入れてください。
 var FORM_URL = '';       // Googleフォームなど、別ページのフォームのURL。入れると「お問い合わせフォーム」ボタンが出ます。
 var FORM_ENDPOINT = '';  // このページ内のフォームから直接送る場合の送信先（Formspree などのURL）。
@@ -373,6 +420,21 @@ var FORM_ENDPOINT = '';  // このページ内のフォームから直接送る�
   });
   if (!SLIDE_AUTOPLAY || reduced) { paused = true; toggle.textContent = '再生'; }
   show(0);
+
+  // 現在の活動：リンクとロゴ
+  [['link-yukata', LINK_YUKATA_INSTAGRAM], ['link-tajimatch', LINK_TAJIMATCH_INSTAGRAM], ['link-network', LINK_NETWORK_HP]].forEach(function (p) {
+    var a = document.getElementById(p[0]);
+    if (a && p[1]) { a.href = p[1]; a.hidden = false; }
+  });
+  document.querySelectorAll('.act-logo img').forEach(function (img) {
+    function fallback() {
+      var s = document.createElement('span');
+      s.className = 'logo-fallback';
+      s.innerHTML = img.getAttribute('data-fallback');
+      img.replaceWith(s);
+    }
+    if (img.complete && img.naturalWidth === 0) fallback(); else img.addEventListener('error', fallback);
+  });
 
   // 動画
   var slot = document.getElementById('movie-slot');
