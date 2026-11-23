@@ -58,7 +58,6 @@ main section[id] { scroll-margin-top: 80px; }
 .hero-dot { width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .hero-dot span { display: block; width: 12px; height: 12px; border-radius: 50%; box-sizing: border-box; border: 2px solid #FFFFFF; background: transparent; }
 .hero-dot.is-active span { background: #FFFFFF; }
-#hero-toggle { min-height: 44px; padding: 0 16px; border: 1px solid #FFFFFF; border-radius: 4px; background: rgba(74, 47, 54, 0.55); color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
 
 /* PROFILE */
 .profile { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; }
@@ -96,6 +95,18 @@ main section[id] { scroll-margin-top: 80px; }
 .bg-blush .card { background: #FFFFFF; }
 .card p { color: var(--sub); }
 details { margin-top: 8px; }
+.talk-block { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.talk-label { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); }
+.themes { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.themes li { padding: 4px 14px; border-radius: 999px; background: var(--pink); color: var(--ink); font-size: 14px; font-weight: 500; line-height: 1.7; }
+details ul.venues { list-style: none; padding: 0; display: flex; flex-direction: column; }
+.venues li { padding: 8px 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+.venues li:last-child { border-bottom: 0; }
+.media li { padding: 0; }
+.media a { display: flex; flex-direction: column; gap: 2px; padding: 12px 0; text-decoration: none; }
+.media-name { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
+.media-title { line-height: 1.7; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.media a:hover .media-title { text-decoration-color: var(--accent); }
 summary { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; box-sizing: border-box; border: 1px solid var(--ink); border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; list-style: none; }
 summary::-webkit-details-marker { display: none; }
 summary::after { content: '＋'; }
@@ -177,7 +188,6 @@ form { display: flex; flex-direction: column; gap: 22px; background: var(--blush
 </div>
 <div class="hero-controls">
 <div id="hero-dots"></div>
-<button type="button" id="hero-toggle">一時停止</button>
 </div>
 </div>
 </section>
@@ -252,9 +262,23 @@ form { display: flex; flex-direction: column; gap: 22px; background: var(--blush
 <article class="card">
 <h3>講演・登壇</h3>
 <p>地方移住、地域づくり、起業、SNS活用などをテーマに講演・セミナーへ登壇。</p>
-<details><summary>主な講演実績を見る</summary>
-<ul>
-<li>[講演実績をここに：年月／イベント名・主催／テーマ]</li>
+<div class="talk-block"><div class="talk-label">講演テーマ</div>
+<ul class="themes">
+<li>地域資源を活かした起業</li>
+<li>SNSマーケティング・情報発信</li>
+<li>ライブ配信を活かしたファンづくり</li>
+</ul></div>
+<details><summary>主な講演・登壇実績を見る</summary>
+<ul class="venues">
+<li>北大阪商工会議所</li>
+<li>三田市商工会</li>
+<li>兵庫県立芸術文化専門職大学</li>
+<li>大阪学院大学</li>
+<li>近畿大学附属豊岡高等学校</li>
+<li>京都府立丹後緑風高等学校</li>
+<li>関西万博「特許庁イベント」</li>
+<li>豊岡ロータリークラブ</li>
+<li>グランフロント大阪ナレッジサロン</li>
 </ul>
 </details>
 </article>
@@ -262,8 +286,10 @@ form { display: flex; flex-direction: column; gap: 22px; background: var(--blush
 <h3>メディア出演・掲載</h3>
 <p>テレビ・新聞・Webメディアへの出演、取材、執筆活動。</p>
 <details><summary>主なメディア実績を見る</summary>
-<ul>
-<li>[メディア実績をここに：年月／媒体名／内容]</li>
+<ul class="venues media">
+<li><a href="https://www.asahi.com/articles/ASVCB2HPCVCBOXIE00RM.html" target="_blank" rel="noopener"><span class="media-name">朝日新聞</span><span class="media-title">限界だった競争や孤独、温泉街が癒やしてくれた　移住選んだライバー</span></a></li>
+<li><a href="https://www.hyogo-tourism.jp/review/detail_598.html" target="_blank" rel="noopener"><span class="media-name">兵庫観光ナビ（兵庫県公式観光サイト）</span><span class="media-title">新店も続々登場！地元女子がおすすめ城崎温泉食べ歩きグルメ</span></a></li>
+<li><a href="https://www.youtube.com/watch?v=8ioxiHV5qig" target="_blank" rel="noopener"><span class="media-name">ABEMA Prime（アベプラ）</span><span class="media-title">【地方創生2.0】制定から10年で変化は？女性に選ばれる地方とは？</span></a></li>
 </ul>
 </details>
 </article>
@@ -361,8 +387,7 @@ var FORM_ENDPOINT = '';  // このページ内のフォームから直接送る�
 (function () {
   var wrap = document.getElementById('hero-slides');
   var dots = document.getElementById('hero-dots');
-  var toggle = document.getElementById('hero-toggle');
-  var current = 0, paused = false, timer = null;
+  var current = 0, timer = null;
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var slideEls = [], dotEls = [];
 
@@ -410,15 +435,9 @@ var FORM_ENDPOINT = '';  // このページ内のフォームから直接送る�
   }
   function schedule() {
     clearTimeout(timer);
-    if (!SLIDE_AUTOPLAY || paused || reduced || SLIDES.length < 2) return;
+    if (!SLIDE_AUTOPLAY || reduced || SLIDES.length < 2) return;
     timer = setTimeout(function () { show((current + 1) % SLIDES.length); }, SLIDE_SECONDS * 1000);
   }
-  toggle.addEventListener('click', function () {
-    paused = !paused;
-    toggle.textContent = paused ? '再生' : '一時停止';
-    schedule();
-  });
-  if (!SLIDE_AUTOPLAY || reduced) { paused = true; toggle.textContent = '再生'; }
   show(0);
 
   // 現在の活動：リンクとロゴ
