@@ -204,7 +204,6 @@ form { display: flex; flex-direction: column; gap: 22px; background: var(--blush
 <p>大阪府大阪市出身。関西学院大学総合政策学部卒業。</p>
 <p>大学在学中に第10代城崎温泉観光大使を務め、卒業後はLIVE配信者として独立。2023年、地域おこし協力隊として城崎温泉へ移住。</p>
 <p>浴衣レンタル店「Yukata mamire」の立ち上げを経て、現在は地域メディア「たじまっち」の運営やSNS・PR支援などに取り組む。</p>
-<p>一般社団法人兵庫県地域おこし協力隊ネットワーク理事。</p>
 </div>
 </div>
 </section>
@@ -243,13 +242,6 @@ form { display: flex; flex-direction: column; gap: 22px; background: var(--blush
 <div class="act-top"><h3>SNS・PR支援</h3></div>
 <p>企業や地域事業者のSNSマーケティング、動画制作、情報発信支援。</p>
 </div>
-</article>
-<article class="act">
-<div class="act-logo"><img src="images/logo-network.png" alt="兵庫県地域おこし協力隊ネットワーク ロゴ" data-fallback="NW" loading="lazy"></div>
-<div class="act-body">
-<div class="act-top"><h3>兵庫県地域おこし協力隊ネットワーク</h3></div>
-<p>理事として地域づくりや、地域と人のつながりを広げる活動に参画。</p>
-<div class="act-links"><a class="act-link" id="link-network" href="#" target="_blank" rel="noopener" aria-label="兵庫県地域おこし協力隊ネットワークのホームページ（新しいタブで開きます）" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3c-2.5 2.6-3.8 5.6-3.8 9s1.3 6.4 3.8 9"></path></svg><span>ホームページ</span></a></div></div>
 </article>
 </div>
 </div>
@@ -376,8 +368,7 @@ var YOUTUBE_ID = 'r-JykgAR0rU';      // 例: YouTubeのURLが https://www.youtub
 // 「現在の活動」のリンク先。URLを入れるとアイコンが表示され、押すとそのページが開きます。
 var LINK_YUKATA_INSTAGRAM = 'https://www.instagram.com/yukatamamire/';     // 例: 'https://www.instagram.com/アカウント名/'
 var LINK_TAJIMATCH_INSTAGRAM = 'https://www.instagram.com/tajimatch_official/';  // 例: 'https://www.instagram.com/アカウント名/'
-var LINK_NETWORK_HP = 'https://hyglvc-network.jp/';           // 例: 'https://〜'（兵庫県地域おこし協力隊ネットワークのホームページ）
-// ロゴ画像は images フォルダの logo-yukata.png / logo-tajimatch.png / logo-network.png / logo-snspr.svg です。
+// ロゴ画像は images フォルダの logo-yukata.png / logo-tajimatch.png / logo-snspr.svg です。
 
 // お問い合わせ。どちらか片方を入れてください。
 var FORM_URL = '';       // Googleフォームなど、別ページのフォームのURL。入れると「お問い合わせフォーム」ボタンが出ます。
@@ -441,7 +432,7 @@ var FORM_ENDPOINT = '';  // このページ内のフォームから直接送る�
   show(0);
 
   // 現在の活動：リンクとロゴ
-  [['link-yukata', LINK_YUKATA_INSTAGRAM], ['link-tajimatch', LINK_TAJIMATCH_INSTAGRAM], ['link-network', LINK_NETWORK_HP]].forEach(function (p) {
+  [['link-yukata', LINK_YUKATA_INSTAGRAM], ['link-tajimatch', LINK_TAJIMATCH_INSTAGRAM],].forEach(function (p) {
     var a = document.getElementById(p[0]);
     if (a && p[1]) { a.href = p[1]; a.hidden = false; }
   });
